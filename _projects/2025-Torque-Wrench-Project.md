@@ -28,7 +28,7 @@ With these design considerations in mind, I first drew out the parameters and ne
 
 ---
 
-![Notebook calculations]({{ "/assets/Notebook-Materials.jpeg" | relative_url }}){: .inline-image-r style="width: 50%"}
+![Notebook calculations]({{ "/assets/images/Notebook-Materials.jpeg" | relative_url }}){: .inline-image-r style="width: 50%"}
 
 ---
 
@@ -81,18 +81,35 @@ With these design considerations in mind, I first drew out the parameters and ne
 Below is the full drawing of my final CAD model. The critical dimensions for manufacturing and FEM modeling are listed. 
 ---
 
-![Fusion 360 Drawing]({{ "/assets/Torque_Wrench_Drawing.jpg" | relative_url }}){: .inline-image-r style="width: 50%"}
+![Fusion 360 Drawing]({{ "/assets/images/Torque_Wrench_Drawing.jpg" | relative_url }}){: .inline-image-r style="width: 50%"}
 
 ---
 
 ### Material & Material Properties
 
-Aenean tincidunt aliquam arcu, in euismod dui dapibus eu. In placerat, mi et ultrices consequat, quam ligula cursus mauris, in semper neque nibh at est. Maecenas hendrerit dignissim porta. Phasellus nec fringilla dolor. Etiam efficitur nisi sit amet velit pharetra feugiat. Etiam ultrices turpis at leo semper, eleifend scelerisque neque malesuada. Aliquam molestie congue rhoncus. Donec blandit neque dolor, nec tristique mi pretium ac. Mauris tincidunt ullamcorper magna, nec pellentesque mi sagittis quis.
+The wrench is fabricated from Ti-6Al-4V, which best fits the material strain requirement.
+The key properties include:
+- Young's Modulus: 16.3*10^6 psi
+- Poisson's Ratio: 0.332
+- Yield Strength: 114 ksi
+- Fracture Toughness: 94.2 ksi*sqrt(in)
+- Fatigue Strength (10^6 Cycles): 88.9 ksi
+- Density: 4.43 g/cm^3 (not structurally relevant but included for completeness)
 
-I was inspired by this old radio when I made this rendering:
+---
 
-![Photo of old radio]({{ "/assets/images/old-radio.jpg" | relative_url }}){: .inline-image-l}
+### FEM Load and Boundary Condition Diagram
 
-Aenean tincidunt aliquam arcu, in euismod dui dapibus eu. In placerat, mi et ultrices consequat, quam ligula cursus mauris, in semper neque nibh at est. Maecenas hendrerit dignissim porta. Phasellus nec fringilla dolor. Etiam efficitur nisi sit amet velit pharetra feugiat. Etiam ultrices turpis at leo semper, eleifend scelerisque neque malesuada. Aliquam molestie congue rhoncus. Donec blandit neque dolor, nec tristique mi pretium ac. Mauris tincidunt ullamcorper magna, nec pellentesque mi sagittis quis.
+The FEM setup followed the course instructions and is illustrated below:
+- The top 0.4 inches of the drive block was fully constrained (zero displacement, shown in yellow).
+- A lateral force was applied on the wrench to create a net torque around the drive block. This force was F= 600/16 = 37.5 lbf.
 
-Aenean tincidunt aliquam arcu, in euismod dui dapibus eu. In placerat, mi et ultrices consequat, quam ligula cursus mauris, in semper neque nibh at est. Maecenas hendrerit dignissim porta. Phasellus nec fringilla dolor. Etiam efficitur nisi sit amet velit pharetra feugiat. Etiam ultrices turpis at leo semper, eleifend scelerisque neque malesuada. Aliquam molestie congue rhoncus. Donec blandit neque dolor, nec tristique mi pretium ac. Mauris tincidunt ullamcorper magna, nec pellentesque mi sagittis quis.
+![Force FEM]({{ "/assets/images/Force.png" | relative_url }}){: .inline-image-l}
+
+---
+
+### Normal Strain Contours (Gauge Direction)
+
+Below is the strain distribution along the gauge axis. The peak gauge-direction strain from the probe was 2585.3 microstrain.
+
+![Normal Elastic Strain FEM]({{ "/assets/images/Normal-Elastic-Strain.png" | relative_url }}){: .inline-image-l}
