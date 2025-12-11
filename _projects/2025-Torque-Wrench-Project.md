@@ -10,23 +10,29 @@ image: /assets/images/torque-wrench.jpg
 ### Summary
 For the final project of MAE 3270: Mechanics of Materials, we were tasked with designing a simple torque wrench that could perform under specified parameters (static loading, fatigue, and fracture strength). After selecting the design and material that the torque wrench was made of, I needed to create a CAD and run an FEM over this model using ANSYS Static Structural. Comparing the analysis from ANSYS to my own hand calculations, I better understood the assumptions that had to be made to properly model the wrench.
 
-###Designing the wrench:
+---
+
+### Designing the wrench:
 
 When beginning the preliminary design of the torque wrench, we were given the following problem statement:
 
 "Your assignment is to design a non-ratcheting, 3/8 inch drive instrumented torque wrench rated for 600 in-lbf. Torque will be transduced using strain gauges bonded to the outer surfaces of the wrench at high strain locations. I am also asking you to perform a finite element analysis of your final design.
 The torque will be transduced by strain gauges on the sides of the torque wrench. The design goal is to maximize the voltage output of the wrench (mV/V) at the rated torque. The design is required to attain at least 1.0 mV/V output at the rated torque of 600 in-lbf. Higher output will lead to more sensitivity and improved signal to noise ratio. The constrains are that the wrench must not fail due to static loading, crack growth or fatigue. Your design will include selecting an appropriate material and dimensions to meet or exceed the following requirements:
-1) Attain at least 1.0 mV/V output at the rated torque of 600 in-lbf.
-2) Safety factor of X_0 = 4 for yield or brittle failure.
-3) Safety factor of X_k = 2 for crack growth from an assumed crack of depth 0.04 inches (1 mm).
-4) Fatigue stress safety factor of X_s = 1.5.
-5) Material must be a steel, aluminum, or titanium alloy."
+- 1) Attain at least 1.0 mV/V output at the rated torque of 600 in-lbf.
+- 2) Safety factor of X_0 = 4 for yield or brittle failure.
+- 3) Safety factor of X_k = 2 for crack growth from an assumed crack of depth 0.04 inches (1 mm).
+- 4) Fatigue stress safety factor of X_s = 1.5.
+- 5) Material must be a steel, aluminum, or titanium alloy."
 
 With these design considerations in mind, I first drew out the parameters and necessary equations within my notebook, before placing these equations into a MATLAB script. I first tested a steel alloy (M42 Steel), before moving onto a titanium alloy (Ti-6Al-4V).
 
-![Notebook calculations]({{ "/assets/Torque_Wrench_Drawing.jpg" | relative_url }}){: .inline-image-r style="width: 50%"}
+---
 
-```python
+![Notebook calculations]({{ "/assets/Notebook-Materials.jpeg" | relative_url }}){: .inline-image-r style="width: 50%"}
+
+---
+
+```matlab
     b = 0.6;    h = 0.5;   L = 16;  % Dimensions of wrench (inches)
     c = 1; % Location of strain gauge (inches)
     X_o_in = 4;    X_k_in = 2;    X_s_in = 1.5; % Required Factors of Safety
@@ -68,9 +74,18 @@ With these design considerations in mind, I first drew out the parameters and ne
 
 ```
 
-![Shaded rendering of earlier version]({{ "/assets/Torque_Wrench_Drawing.jpg" | relative_url }}){: .inline-image-r style="width: 50%"}
+---
 
-Nulla et magna urna. Morbi a ipsum sollicitudin, rhoncus risus volutpat, ultricies nunc. Quisque mollis finibus ante id imperdiet. Quisque vehicula elit sit amet felis facilisis fermentum.
+### CAD Drawing
+
+Below is the full drawing of my final CAD model. The critical dimensions for manufacturing and FEM modeling are listed. 
+---
+
+![Fusion 360 Drawing]({{ "/assets/Torque_Wrench_Drawing.jpg" | relative_url }}){: .inline-image-r style="width: 50%"}
+
+---
+
+### Material & Material Properties
 
 Aenean tincidunt aliquam arcu, in euismod dui dapibus eu. In placerat, mi et ultrices consequat, quam ligula cursus mauris, in semper neque nibh at est. Maecenas hendrerit dignissim porta. Phasellus nec fringilla dolor. Etiam efficitur nisi sit amet velit pharetra feugiat. Etiam ultrices turpis at leo semper, eleifend scelerisque neque malesuada. Aliquam molestie congue rhoncus. Donec blandit neque dolor, nec tristique mi pretium ac. Mauris tincidunt ullamcorper magna, nec pellentesque mi sagittis quis.
 
